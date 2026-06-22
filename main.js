@@ -1,27 +1,22 @@
-const countEl = document.getElementById('char-count');
-const btnMinus = document.getElementById('btn-decrease');
-const btnPlus = document.getElementById('btn-increase');
+const numeroSenha = document.querySelector('.parametro-senha__texto');
+let tamanhoSenha = 12;
+numeroSenha.textContent = tamanhoSenha;
 
-if (countEl && btnMinus && btnPlus) {
-  let count = parseInt(countEl.textContent, 10) || 12;
-  const minCount = 1;
-  const maxCount = 32;
+const botoes = document.querySelectorAll('.parametro-senha__botao');
 
-  const updateCount = () => {
-    countEl.textContent = count;
-  };
-
-  btnMinus.addEventListener('click', () => {
-    if (count > minCount) {
-      count -= 1;
-      updateCount();
+botoes[0].onclick = diminuiTamanho;
+botoes[1].onclick = aumentaTamanho;
+function diminuiTamanho(){
+    if (tamanhoSenha > 1){
+       // tamanhoSenha = tamanhoSenha-1;
+        tamanhoSenha--;
     }
-  });
-
-  btnPlus.addEventListener('click', () => {
-    if (count < maxCount) {
-      count += 1;
-      updateCount();
+    numeroSenha.textContent = tamanhoSenha;
+}
+function aumentaTamanho(){
+    if (tamanhoSenha < 20){
+       // tamanhoSenha = tamanhoSenha+1;
+       tamanhoSenha++;
     }
-  });
+    numeroSenha.textContent = tamanhoSenha;
 }
